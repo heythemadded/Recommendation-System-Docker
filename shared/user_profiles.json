@@ -1,0 +1,82 @@
+{
+    "1": {
+        "preferred_colors": [
+            "lightsteelblue",
+            "steelblue",
+            "dimgray"
+        ],
+        "preferred_tags": [],
+        "preferred_orientation": "paysage",
+        "favorite_images": [
+            "image_20.jpg",
+            "image_70.jpg",
+            "image_78.jpg",
+            "image_69.jpg",
+            "image_40.jpg"
+        ]
+    },
+    "2": {
+        "preferred_colors": [
+            "darkolivegreen",
+            "darkslategray",
+            "dimgray"
+        ],
+        "preferred_tags": [],
+        "preferred_orientation": "paysage",
+        "favorite_images": [
+            "image_39.jpg",
+            "image_67.jpg",
+            "image_79.jpg",
+            "image_4.jpg",
+            "image_72.jpg"
+        ]
+    },
+    "3": {
+        "preferred_colors": [
+            "darkslategray",
+            "dimgray",
+            "skyblue"
+        ],
+        "preferred_tags": [],
+        "preferred_orientation": "paysage",
+        "favorite_images": [
+            "image_76.jpg",
+            "image_18.jpg",
+            "image_65.jpg",
+            "image_64.jpg",
+            "image_51.jpg"
+        ]
+    },
+    "4": {
+        "preferred_colors": [
+            "darkolivegreen",
+            "gray",
+            "lightsteelblue"
+        ],
+        "preferred_tags": [],
+        "preferred_orientation": "paysage",
+        "favorite_images": [
+            "image_21.jpg",
+            "image_4.jpg",
+            "image_70.jpg",
+            "image_74.jpg",
+            "image_75.jpg"
+        ]
+    },
+    "5": {
+        "preferred_colors": [
+            "darkslategray",
+            "darkolivegreen",
+            "black"
+        ],
+        "preferred_tags": [],
+        "preferred_orientation": "paysage",
+        "favorite_images": [
+            "image_37.jpg",
+            "image_40.jpg",
+            "image_62.jpg",
+            "image_67.jpg",
+            "image_59.jpg"
+        ]
+    }
+}

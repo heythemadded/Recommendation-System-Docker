@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Tagging App</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 2.5rem;
+    }
+
+    #taggingForm {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Grid Layout */
+    #imageList {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .image-container {
+      background: white;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 220px;
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+    }
+
+    .image-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    label {
+      display: block;
+      margin-top: 8px;
+      font-weight: bold;
+    }
+
+    .checkbox-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+      margin-top: 10px;
+    }
+
+    .checkbox-container label {
+      font-weight: normal;
+      margin-left: 5px;
+    }
+
+    button[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 20px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Image Tagging Application</h1>
+
+  <form id="taggingForm">
+    <div id="imageList"></div>
+    <button type="submit">Submit Tags</button>
+  </form>
+
+  <script>
+    // Inject images from backend
+    const images = {{ images | tojson }};
+    const tagOptions = ["animal", "mountain", "waterfall", "lake", "forest", "grass", "desert", "safari", "rocks", "not interessting"];
+
+
+    const imageList = document.getElementById("imageList");
+
+    // Generate UI for each image
+    images.forEach(image => {
+      const container = document.createElement("div");
+      container.className = "image-container";
+
+      const imgElement = document.createElement("img");
+      imgElement.src = "/images/" + image.nom_fichier;
+      imgElement.alt = "Image";
+
+      const label = document.createElement("label");
+      label.textContent = image.nom_fichier;
+
+      container.appendChild(imgElement);
+      container.appendChild(label);
+
+      // Add checkboxes for tags in two columns
+      const checkboxContainer = document.createElement("div");
+      checkboxContainer.className = "checkbox-container";
+
+      tagOptions.forEach(tag => {
+        const checkboxWrapper = document.createElement("div");
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.name = `tags-${image.nom_fichier}`;
+        checkbox.value = tag;
+        checkbox.checked = image.tags && image.tags.includes(tag);
+
+        const checkboxLabel = document.createElement("label");
+        checkboxLabel.textContent = tag;
+
+        checkboxWrapper.appendChild(checkbox);
+        checkboxWrapper.appendChild(checkboxLabel);
+        checkboxContainer.appendChild(checkboxWrapper);
+      });
+
+      container.appendChild(checkboxContainer);
+      imageList.appendChild(container);
+    });
+
+    // Handle form submission
+    document.getElementById("taggingForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const updatedImages = images.map(image => {
+        const selectedTags = Array.from(document.querySelectorAll(`input[name="tags-${image.nom_fichier}"]:checked`))
+                                   .map(checkbox => checkbox.value);
+        return {
+          nom_fichier: image.nom_fichier,
+          tags: selectedTags
+        };
+      });
+
+      // Send data to the backend
+      fetch("/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ images: updatedImages })
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert(data.message);
+      });
+    });
+  </script>
+</body>
+</html>

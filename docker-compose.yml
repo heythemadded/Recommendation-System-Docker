@@ -1,0 +1,29 @@
+services:
+  collecteur:
+    build:
+      context: ./collecteur
+    container_name: collecte_images
+    volumes:
+      - ./shared:/data
+    restart: "no"
+  annoteur:
+    build:
+      context: ./annoteur-automatique
+    container_name: annotation_auto
+    volumes:
+      - ./shared:/data
+  annoteur_manuelle:
+    build:
+      context: ./annoteur-manuelle
+    container_name: annotation_manuelle
+    volumes:
+      - ./shared:/data
+    ports:
+      - "5000:5000"
+  recommandation:
+      build:
+        context: ./recommandation
+        dockerfile: Dockerfile
+      container_name: recommandation_spark
+      volumes:
+        - ./shared:/data
