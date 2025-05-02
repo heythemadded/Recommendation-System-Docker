@@ -111,7 +111,6 @@ def callback(ch, method, properties, body):
             if meta:
                 metadata_batch.append(meta)
 
-                # Envoyer vers images_a_traiter
                 ch.basic_publish(
                     exchange='',
                     routing_key=QUEUE_OUTPUT,

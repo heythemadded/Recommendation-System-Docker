@@ -1,0 +1,88 @@
+{
+    "1": {
+        "preferred_colors": [
+            "gray",
+            "darkslategray",
+            "darkolivegreen"
+        ],
+        "preferred_tags": [],
+        "preferred_orientation": "paysage",
+        "favorite_images": [
+            "image_da4774a6-5d7e-471c-9c87-981de09da4f8.jpg",
+            "image_81265ca3-207a-4bb7-864d-1e44b594dccb.jpg",
+            "image_a8f2dd77-471a-4288-8b87-ac789fda92aa.jpg",
+            "image_66b449b6-058a-4c83-b98d-4d2792d1ab14.jpg",
+            "image_c069364e-f432-41f2-84ad-bca5ce35a3fa.jpg"
+        ]
+    },
+    "2": {
+        "preferred_colors": [
+            "darkslategray",
+            "dimgray",
+            "lightsteelblue"
+        ],
+        "preferred_tags": [
+            "desert",
+            "rocks"
+        ],
+        "preferred_orientation": "paysage",
+        "favorite_images": [
+            "image_ec3b318c-266e-4b95-a13c-48d9319137c9.jpg",
+            "image_588ebc45-f32f-4b5e-8bf1-e5c1aa6d50a4.jpg",
+            "image_b9b4547f-93e2-4493-9e15-ce2b0f2f017f.jpg",
+            "image_90fe8707-7421-4e23-9b9b-7a860026f45b.jpg",
+            "image_5d001f89-52a4-4c0f-a477-3c428c1e3ca7.jpg"
+        ]
+    },
+    "3": {
+        "preferred_colors": [
+            "darkolivegreen",
+            "darkgray",
+            "lightsteelblue"
+        ],
+        "preferred_tags": [],
+        "preferred_orientation": "paysage",
+        "favorite_images": [
+            "image_59a417b1-3b35-49f4-9a87-d5f4d37e6670.jpg",
+            "image_4ec03287-232c-4224-b9ec-24507132dbab.jpg",
+            "image_1b49bb4e-07c8-4acf-9e87-36d61b28348b.jpg",
+            "image_1ca6c603-7c57-46f1-a684-4700e8e7316a.jpg",
+            "image_f1369e8d-128e-42f8-b3eb-1db6ca34091f.jpg"
+        ]
+    },
+    "4": {
+        "preferred_colors": [
+            "darkolivegreen",
+            "black",
+            "darkgray"
+        ],
+        "preferred_tags": [
+            "forest",
+            "animal"
+        ],
+        "preferred_orientation": "paysage",
+        "favorite_images": [
+            "image_e381f156-05cf-450c-abe1-be726eb848c1.jpg",
+            "image_56ae53a4-e6a2-4746-a038-92f2f8a40419.jpg",
+            "image_96dbf490-fffa-4c35-999b-68001a237482.jpg",
+            "image_2c7bd1db-6c15-43bb-9154-602df349d86f.jpg",
+            "image_9364c4ac-c966-4e2a-9c49-bfa72bae4237.jpg"
+        ]
+    },
+    "5": {
+        "preferred_colors": [
+            "dimgray",
+            "rosybrown",
+            "black"
+        ],
+        "preferred_tags": [],
+        "preferred_orientation": "paysage",
+        "favorite_images": [
+            "image_1bf684d2-9346-4ad2-a5d7-8c08f32f8c29.jpg",
+            "image_837673dd-9cc0-4ebd-95af-e6e42d98a043.jpg",
+            "image_ce102f80-ebbf-4432-9d91-3a6e5ab49da5.jpg",
+            "image_12811892-7a42-4690-8135-f8b54adc0117.jpg",
+            "image_b2c044d7-15cf-446b-918b-8d6365f46b1a.jpg"
+        ]
+    }
+}
