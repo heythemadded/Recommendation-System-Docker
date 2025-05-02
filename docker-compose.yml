@@ -1,29 +1,95 @@
+version: "3.8"
+
 services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"      
+      - "15672:15672"    
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: password
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - backend
+
+  coordinateur:
+    build:
+      context: ./coordinateur
+    volumes:
+      - ./shared:/data
+    networks:
+      - backend
+    depends_on:
+      - rabbitmq
+    command: >
+      sh -c "
+        until nc -z rabbitmq 5672;
+        do echo 'Attente RabbitMQ...'; sleep 1; done;
+        echo 'RabbitMQ prêt';
+        python coordinateur.py
+      "
+    
   collecteur:
     build:
       context: ./collecteur
-    container_name: collecte_images
     volumes:
       - ./shared:/data
-    restart: "no"
+    networks:
+      - backend
+    depends_on:
+      - rabbitmq
+    command: >
+      sh -c "
+        until nc -z rabbitmq 5672;
+        do echo 'Attente RabbitMQ...'; sleep 1; done;
+        echo 'RabbitMQ prêt';
+        python -u collecteur.py
+      "
+  
   annoteur:
     build:
       context: ./annoteur-automatique
-    container_name: annotation_auto
     volumes:
       - ./shared:/data
-  annoteur_manuelle:
-    build:
-      context: ./annoteur-manuelle
-    container_name: annotation_manuelle
-    volumes:
-      - ./shared:/data
-    ports:
-      - "5000:5000"
-  recommandation:
-      build:
-        context: ./recommandation
-        dockerfile: Dockerfile
-      container_name: recommandation_spark
-      volumes:
-        - ./shared:/data
+    networks:
+      - backend
+    depends_on:
+      - rabbitmq
+    command: >
+      sh -c "
+        until nc -z rabbitmq 5672;
+        do echo 'Attente RabbitMQ...'; sleep 1; done;
+        echo 'RabbitMQ prêt';
+        python -u annoteur.py
+      "
+
+  # annoteur_manuelle:
+  #   build:
+  #     context: ./annoteur-manuelle
+  #   volumes:
+  #     - ./shared:/data
+  #   networks:
+  #     - backend
+  #   ports:
+  #     - "5000:5000"
+  #   depends_on:
+  #     - rabbitmq
+
+  # recommandation:
+  #   build:
+  #     context: ./recommandation
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - ./shared:/data
+  #   networks:
+  #     - backend
+  #   depends_on:
+  #     - rabbitmq
+
+volumes:
+  rabbitmq_data:
+
+networks:
+  backend:

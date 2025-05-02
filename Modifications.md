@@ -8,3 +8,12 @@ Je peux créer un reverse proxy qui gére les appels API pour ce dernier (a voir
 Je peux faire un manager qui sépare les tâches de collecte et annotation automatique des images parceque ça prend énormement du temps. 
 
 Manager avec deux nodes collecte et deux node annotation.
+
+---------------------------------- 22/04
+Probleme de liaison de queue entre coordinateur, collecteur.
+Les images devront être nommée dès le début pour éviter des problèmes de nommage. 
+
+----------------------------------- 02/05 
+Résolution du problème : 
+- J'ai fais en sorte que tous les docker ne consomme pas une entrée dans la queue que lorsqu'ils finissent avec leur entrée et renvoie un acquittement. 
+Sa permets de séparer les tâches avec équités.
