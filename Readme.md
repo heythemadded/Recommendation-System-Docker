@@ -16,12 +16,12 @@ Ces services tourneront en continu pour traiter les images automatiquement.
 Laisse les collecteurs et annoteurs travailler. Une fois que RabbitMQ ne contient plus de messages "ready", tu peux passer à la suite.
 
 ### 3. Annotation manuelle
-Lance l’interface web manuelle :
+Lance l’interface web manuelle (si les images ne s'affiche pas, relancer le contenair pour monter les nouvelles images ajoutées) :
 
 Depuis le navigateur, accède à http://localhost:5000 pour corriger ou ajouter des tags aux images.
 Une fois les tags soumis, le service de recommandation se déclenche automatiquement.
 
 ### 4. Visualisation
-Tu peux maintenant visualiser les recommandations dans le notebook :
+Tu peux maintenant visualiser les recommandations dans le notebook (si les images ne s'affiche pas, relancer le contenair pour monter les nouvelles images ajoutées):
 
 rends-toi sur http://localhost:8888 et ouvre le fichier recommandation.ipynb pour consulter les résultats.
