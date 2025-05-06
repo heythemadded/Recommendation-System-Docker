@@ -17,10 +17,11 @@ Laisse les collecteurs et annoteurs travailler. Une fois que RabbitMQ ne contien
 
 ### 3. Annotation manuelle
 Lance l’interface web manuelle :
-- Depuis le navigateur, accède à http://localhost:5000 pour corriger ou ajouter des tags aux images.
 
+Depuis le navigateur, accède à http://localhost:5000 pour corriger ou ajouter des tags aux images.
 Une fois les tags soumis, le service de recommandation se déclenche automatiquement.
 
 ### 4. Visualisation
 Tu peux maintenant visualiser les recommandations dans le notebook :
+
 rends-toi sur http://localhost:8888 et ouvre le fichier recommandation.ipynb pour consulter les résultats.
