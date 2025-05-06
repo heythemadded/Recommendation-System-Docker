@@ -146,12 +146,9 @@ def start_reco():
     for user_id in range(1, NUM_USERS + 1):
         recs = recommend_real_simulation(user_id, top_n=5)
         recommendations[user_id] = recs
-        # print(recs)
 
     with open("/data/recommandations.json", "w", encoding="utf-8") as f:
         json.dump(recommendations, f, ensure_ascii=False, indent=4)
-
-    # print("✅ Recommandations sauvegardées dans recommandations.json")
 
 def callback(ch, method, properties, body):
     if body.decode() == "start_reco":
